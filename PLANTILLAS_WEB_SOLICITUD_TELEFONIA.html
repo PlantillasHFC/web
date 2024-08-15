@@ -31,7 +31,6 @@
     align-items: center; /* Centrar los elementos verticalmente */
     flex-wrap: wrap; /* Envolver elementos */
     margin-bottom: 30px;
-    border: 30px solid black;
 }
 
 .botones-container button {
@@ -45,7 +44,7 @@
     font-size: 16px; /* Tamaño de letra */
 }
 
-button.copiarTexto {
+button.copiar {
     background-color: #000000;
     color: white;
     padding: 10px 20px;
@@ -83,7 +82,7 @@ input[type="text"], input[type="number"], select {
 input[type="submit"], input[type="button"] {
     background-color: #000000;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -157,13 +156,13 @@ textarea {
     <div>
       <h2>TITULO NOTAS F7</h2>
       <textarea id="tituloNotasF7" readonly></textarea>
-      <button onclick="copiarTexto('tituloNotasF7')">Copiar</button>
+      <button class="copiar" onclick="copiarTexto('tituloNotasF7')">Copiar</button>
     </div>
 
     <div>
       <h2>PLANTILLA LOG</h2>
       <textarea id="plantillaLog" readonly></textarea>
-      <button onclick="copiarTexto('plantillaLog')">Copiar</button>
+      <button class="copiar" onclick="copiarTexto('plantillaLog')">Copiar</button>
     </div>
   </div>
 </div>
