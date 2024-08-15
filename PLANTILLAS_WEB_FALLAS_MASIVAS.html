@@ -124,6 +124,8 @@ textarea {
 
 <div class="container">
   <form id="miniFormulario">
+    <label for="Nodo">Nodo:</label>
+    <input type="text" id="Nodo" name="Nodo" required><br>
     <label for="numeroPQR">Numero de PQR:</label>
     <input type="text" id="numeroPQR" name="numeroPQR" required><br>
     <label for="marcacion">Marcación:</label>
@@ -243,6 +245,9 @@ function copiarFormulario() {
 }
 
 function generarPlantilla() {
+  var Nodo = document.getElementById("Nodo").value;
+  var reporteFalla = document.getElementById("reporteFalla").value;
+  var llsOT = document.getElementById("llsOT").value;
   var fabricante = document.getElementById("fabricante").value;
   var nombreLlamada = document.getElementById("nombreLlamada").value;
   var celular = document.getElementById("celular").value;
@@ -251,7 +256,7 @@ function generarPlantilla() {
   var vecinos = document.getElementById("vecinos").value;
   var observaciones = document.getElementById("observaciones").value;
   
-  var plantillaLog = "Nombre: " + nombreLlamada + "/Celular: " + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "/VER F7...(" + fabricante + ")";
+  var plantillaLog = "*" + llsOT + "* EYN / " + reporteFalla + " // NODO: " + Nodo + "\n" + "Nombre: " + nombreLlamada + "/ Celular: " + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + " / VER F7...(" + fabricante + ")";
   document.getElementById("plantillaLog").value = plantillaLog;
 
   var tituloNotasF7 = "TK " + document.getElementById("numeroPQR").value + " " + document.getElementById("marcacion").value;

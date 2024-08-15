@@ -263,10 +263,10 @@ function generarPlantilla() {
   var vecinos = document.getElementById("vecinos").value;
   var observaciones = document.getElementById("observaciones").value;
   
-  var plantillaCreacion = "SOPPY: " + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "";
+  var plantillaCreacion = "SOPPY: " + nombreLlamada + " / " + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + " / " + observaciones + "";
   document.getElementById("plantillaCreacion").value = plantillaCreacion;
   
-  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "/VER F7...(" + fabricante + ")";
+  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + " / " + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + " / " + observaciones + " / VER F7...(" + fabricante + ")";
 
   document.getElementById("plantillaLog").value = plantillaLog;
 
