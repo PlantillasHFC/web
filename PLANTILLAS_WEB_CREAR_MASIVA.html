@@ -82,7 +82,7 @@ input[type="text"], input[type="number"], select {
 input[type="submit"], input[type="button"] {
     background-color: #000000;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -136,6 +136,8 @@ textarea {
   </form>
 
   <form id="formulario">
+    <label for="Cuenta">Cuenta:</label>
+    <input type="text" id="Cuenta" name="Cuenta" required><br>
     <label for="TipodeServicio">Tipo de Servicio:</label>
     <select id="TipodeServicio" name="TipodeServicio" required>
       <option value="HFC">HFC</option>
@@ -215,6 +217,7 @@ function copiarTexto(id) {
 }
 
 function generarPlantilla() {
+  var Cuenta = document.getElementById("Cuenta").value;
   var fabricante = document.getElementById("fabricante").value;
   var numeroPQR = document.getElementById("numeroPQR").value;
   var marcacion = document.getElementById("marcacion").value;
@@ -237,6 +240,7 @@ function generarPlantilla() {
   var contador = "N " + negocios + " - E " + empresas + " - E&N " + total;
   
   var plantillaLog = contador + "\n\n" +
+                     "Cuenta: " + Cuenta + "\t\t\t" + "\n" +
                      "Tipo de Servicio: " + document.getElementById("TipodeServicio").value + "\t\t\t" + "\n" +
                      "Nombre: " + nombre + "\t\t\t" + "\n" +
                      "Celular: " + celular + "\t\t\t" + "\n" +
