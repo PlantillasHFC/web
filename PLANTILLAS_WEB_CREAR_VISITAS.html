@@ -230,11 +230,19 @@ function limpiarCampos() {
 function copiarTexto(id) {
   var campos = document.querySelectorAll('#' + id + ' input, #' + id + ' select, #' + id + ' textarea');
   var texto = "";
+  
   campos.forEach(function(campo) {
     if (campo.type !== 'button') {
-      texto += campo.previousElementSibling.textContent + ": " + campo.value + "\n";
+      if (campo.id === "llsOT") {
+        var fechaVisita = document.getElementById("fechaVisita").value;
+        var franjaVisita = document.getElementById("franjaVisita").value;
+        texto += campo.previousElementSibling.textContent + ": " + campo.value + " " + fechaVisita + " " + franjaVisita + "\n";
+      } else {
+        texto += campo.previousElementSibling.textContent + ": " + campo.value + "\n";
+      }
     }
   });
+  
   navigator.clipboard.writeText(texto).then(function() {
     alert("¡Copiado con éxito!");
   }, function() {
@@ -263,10 +271,10 @@ function generarPlantilla() {
   var vecinos = document.getElementById("vecinos").value;
   var observaciones = document.getElementById("observaciones").value;
   
-  var plantillaCreacion = "SOPPY: " + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "";
+  var plantillaCreacion = "SOPPY: " + nombreLlamada + "/" + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + "";
   document.getElementById("plantillaCreacion").value = plantillaCreacion;
   
-  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "/VER F7...(" + fabricante + ")";
+  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + "/" + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + " / VER F7...(" + fabricante + ")";
 
   document.getElementById("plantillaLog").value = plantillaLog;
 
