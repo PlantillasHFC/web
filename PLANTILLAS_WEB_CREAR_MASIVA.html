@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Gestión Backoffice HFC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .titulo {
+    width: 103%;
+    background-color: #000000;
+    text-align: center;
+    color: white;
+    margin-bottom: 0px;
+  }
+  .botones-container {
+    background-color: #000000; /* Azul oscuro */
+    margin-top: 0px;
+    width: 103%; /* Ajuste de ancho */
+    display: flex;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    flex-wrap: wrap; /* Envolver elementos */
+    margin-bottom: 30px;
+}
+
+.botones-container button {
+    background-color: #000000; /* Azul oscuro */
+    color: white; /* Letras blancas */
+    padding: 12px 20px; /* Aumentar el espacio interno */
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 2px; /* Espacio entre los botones */
+    cursor: pointer;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+button.copiar {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Envolver elementos */
+}
+
+#miniFormulario, #formulario {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+input[type="text"], input[type="number"], select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], input[type="button"] {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Alineación a la derecha */
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #000000;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+</style>
+</head>
+<body>
+
+<div class="titulo">
+  <h1>PLANTILLAS HFC (CREACION DE MASIVA)</h1>
+</div>
+
+<div class="botones-container">
+  <h3></h3>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+</div>
+
+<div class="container">
+  <form id="miniFormulario">
+    <label for="contadorEynMaximo">Contador EYN MAXIMO:</label>
+    <input type="number" id="contadorEynMaximoNegocios" name="contadorEynMaximoNegocios" placeholder="Negocios" required>
+    <input type="number" id="contadorEynMaximoEmpresas" name="contadorEynMaximoEmpresas" placeholder="Empresas" required><br>
+    <label for="numeroPQR">Numero de PQR:</label>
+    <input type="text" id="numeroPQR" name="numeroPQR" required><br>
+    <label for="marcacion">Marcación:</label>
+    <input type="text" id="marcacion" name="marcacion" required><br>
+    <label for="fabricante">Fabricante:</label>
+    <input type="text" id="fabricante" name="fabricante" required><br>
+  </form>
+
+  <form id="formulario">
+    <label for="TipodeServicio">Tipo de Servicio:</label>
+    <select id="TipodeServicio" name="TipodeServicio" required>
+      <option value="HFC">HFC</option>
+      <option value="FTTH">FTTF</option>
+      <option value="FTTX">FTTX</option>
+    </select><br>
+    <label for="Nombre">Nombre:</label>
+    <input type="text" id="Nombre" name="Nombre" required><br>
+    <label for="Celular">Celular:</label>
+    <input type="text" id="Celular" name="Celular" required><br>
+    <label for="Afectacion">Afectacion:</label>
+    <select id="Afectacion" name="Afectacion" required>
+      <option value="CM DESENGANCHADOS">CM DESENGANCHADOS</option>
+      <option value="SECTOR SIN SEÑAL">SECTOR SIN SEÑAL</option>
+      <option value="SECTOR CON INTERMITENCIA">SECTOR CON INTERMITENCIA</option>
+      <option value="HOTEL SIN SEÑAL">HOTEL SIN SEÑAL</option>
+      <option value="MATRIZ SIN SEÑAL">MATRIZ SIN SEÑAL</option>
+    </select><br>
+    <label for="DireccionFisicadelCliente">Direccion Fisica del Cliente:</label>
+    <input type="text" id="DireccionFisicadelCliente" name="DireccionFisicadelCliente" required><br>
+    <label for="Ciudad">Ciudad:</label>
+    <input type="text" id="Ciudad" name="Ciudad" required><br>
+    <label for="Barrio">Barrio:</label>
+    <input type="text" id="Barrio" name="Barrio" required><br>
+    <label for="NodoOptico">Nodo Optico:</label>
+    <input type="text" id="NodoOptico" name="NodoOptico" required><br>
+    <label for="CMTS">CMTS:</label>
+    <input type="text" id="CMTS" name="CMTS" required><br>
+    <label for="CuentasAfectadas">Cuentas Afectadas:</label>
+    <input type="text" id="CuentasAfectadas" name="CuentasAfectadas" required><br>
+    <label for="observaciones">Observaciones:</label>
+    <input type="text" id="observaciones" name="observaciones" required><br>
+    <label for="NombreReporte">Nombre de Quien Reporta:</label>
+    <input type="text" id="NombreReporte" name="NombreReporte" required><br>
+    <label for="NombreAliado">Nombre del Aliado:</label>
+    <input type="text" id="NombreAliado" name="NombreAliado" required><br>
+    <input type="button" value="Limpiar campos" onclick="limpiarCampos()">
+    <input type="button" value="Generar plantillas" onclick="generarPlantilla()">
+  </form>
+  
+  <div class="plantilla-container">
+    <div>
+      <h2>TITULO INCIDENTE MAXIMO</h2>
+      <textarea id="tituloNotasF7" readonly></textarea>
+      <button onclick="copiarTexto('tituloNotasF7')">Copiar</button>
+    </div>
+
+    <div>
+      <h2>PLANTILLA MAXIMO</h2>
+      <textarea id="plantillaLog" readonly></textarea>
+      <button onclick="copiarTexto('plantillaLog')">Copiar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr(".flatpickr", {
+    enableTime: false,
+    dateFormat: "d-m-Y",
+  });
+});
+
+function limpiarCampos() {
+  document.getElementById("formulario").reset();
+  document.getElementById("miniFormulario").reset();
+}
+
+function copiarTexto(id) {
+  var texto = document.getElementById(id).value;
+  navigator.clipboard.writeText(texto).then(function() {
+    alert("¡Copiado con éxito!");
+  }, function() {
+    alert("Error al copiar.");
+  });
+}
+
+function generarPlantilla() {
+  var fabricante = document.getElementById("fabricante").value;
+  var numeroPQR = document.getElementById("numeroPQR").value;
+  var marcacion = document.getElementById("marcacion").value;
+  var nodoOptico = document.getElementById("NodoOptico").value;
+  var nombre = document.getElementById("Nombre").value;
+  var celular = document.getElementById("Celular").value;
+  var afectacion = document.getElementById("Afectacion").value;
+  var direccion = document.getElementById("DireccionFisicadelCliente").value;
+  var ciudad = document.getElementById("Ciudad").value;
+  var barrio = document.getElementById("Barrio").value;
+  var cmts = document.getElementById("CMTS").value;
+  var cuentasAfectadas = document.getElementById("CuentasAfectadas").value;
+  var observaciones = document.getElementById("observaciones").value;
+  var nombreReporte = document.getElementById("NombreReporte").value;
+  var nombreAliado = document.getElementById("NombreAliado").value;
+
+  var negocios = parseInt(document.getElementById("contadorEynMaximoNegocios").value) || 0;
+  var empresas = parseInt(document.getElementById("contadorEynMaximoEmpresas").value) || 0;
+  var total = negocios + empresas;
+  var contador = "N " + negocios + " - E " + empresas + " - E&N " + total;
+  
+  var plantillaLog = contador + "\n\n" +
+                     "Tipo de Servicio: " + document.getElementById("TipodeServicio").value + "\t\t\t" + "\n" +
+                     "Nombre: " + nombre + "\t\t\t" + "\n" +
+                     "Celular: " + celular + "\t\t\t" + "\n" +
+                     "Afectacion: " + afectacion + "\t\t\t" + "\n" +
+                     "Direccion Fisica del Cliente: " + direccion + "\t\t\t" + "\n" +
+                     "Ciudad: " + ciudad + "\t\t\t" + "\n" +
+                     "Barrio: " + barrio + "\t\t\t" + "\n" +
+                     "Nodo Optico: " + nodoOptico + "\t\t\t" + "\n" +
+                     "CMTS: " + cmts + "\t\t\t" + "\n" +
+                     "Cuentas Afectadas: " + cuentasAfectadas + "\t\t\t" + "\n" +
+                     "Observaciones: " + observaciones + "\t\t\t" + "\n" +
+                     "Nombre de Quien Reporta: " + nombreReporte + "\t\t\t" + "\n" +
+                     "Nombre del Aliado: " + nombreAliado + "\t\t\t";
+  document.getElementById("plantillaLog").value = plantillaLog;
+
+  var tituloNotasF7 = "EYN " + afectacion + " NODO: " + nodoOptico + "";
+  document.getElementById("tituloNotasF7").value = tituloNotasF7;
+}
+</script>
+
+<footer>By SO</footer>
+
+</body>
+</html>

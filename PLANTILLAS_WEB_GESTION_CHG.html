@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Gestión Backoffice HFC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .titulo {
+    width: 103%;
+    background-color: #000000;
+    text-align: center;
+    color: white;
+    margin-bottom: 0px;
+  }
+  .botones-container {
+    background-color: #000000; /* Azul oscuro */
+    margin-top: 0px;
+    width: 103%; /* Ajuste de ancho */
+    display: flex;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    flex-wrap: wrap; /* Envolver elementos */
+    margin-bottom: 30px;
+}
+
+.botones-container button {
+    background-color: #000000; /* Azul oscuro */
+    color: white; /* Letras blancas */
+    padding: 12px 20px; /* Aumentar el espacio interno */
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 2px; /* Espacio entre los botones */
+    cursor: pointer;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+button.copiar {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Envolver elementos */
+}
+
+#miniFormulario, #formulario {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+input[type="text"], input[type="number"], select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], input[type="button"] {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Alineación a la derecha */
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #000000;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+</style>
+</head>
+<body>
+
+<div class="titulo">
+  <h1>PLANTILLAS HFC (GESTION CHG)</h1>
+</div>
+
+<div class="botones-container">
+  <h3></h3>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+</div>
+
+<div class="container">
+  <form id="miniFormulario">
+    <label for="numeroPQR">ID CHG:</label>
+    <input type="text" id="numeroPQR" name="numeroPQR" required><br>
+    <label for="CMTSACTUAL">CMTS Actual:</label>
+    <input type="text" id="CMTSACTUAL" name="CMTSACTUAL" required><br>
+    <label for="CMTSNUEVA">CMTS Nueva:</label>
+    <input type="text" id="CMTSNUEVA" name="CMTSNUEVA" required><br>
+    <label for="fechaVisita">Fecha de Cambio:</label>
+    <input type="text" id="fechaVisita" name="fechaVisita" class="flatpickr" required><br>
+    <label for="franjaVisita">Franja de Trabajos:</label>
+    <input type="text" id="franjaVisita" name="franjaVisita" required><br>
+    </form>
+
+  <form id="formulario">
+    <label for="Cuenta">Cuenta:</label>
+    <input type="text" id="Cuenta" name="Cuenta" required><br>
+    <label for="Razon">Razon:</label>
+    <input type="text" id="Razon" name="Razon" required><br>
+    <label for="Direccion">Direccion:</label>
+    <input type="text" id="Direccion" name="Direccion" required><br>
+    <label for="Ciudad">Ciudad:</label>
+    <input type="text" id="Ciudad" name="Ciudad" required><br>
+    <label for="Correo">Correo:</label>
+    <input type="text" id="Correo" name="Correo" required><br>
+    <label for="IPs1">IP´s Actuales:</label>
+    <input type="text" id="IPs1" name="IPs1" required><br>
+    <label for="IPs2">IP´s Nuevas:</label>
+    <input type="text" id="IPs2" name="IPs2" required><br>
+    <label for="Gateway">Gateway:</label>
+    <input type="text" id="Gateway" name="Gateway" required><br>
+    <label for="Mascara">Mascara:</label>
+    <input type="text" id="Mascara" name="Mascara" required><br>
+    <label for="DNS">DNS´s:</label>
+    <input type="text" id="DNS" name="DNS" required><br>
+    <input type="button" value="Limpiar Campos" onclick="limpiarCampos()">
+    <input type="button" value="Generar plantillas" onclick="generarPlantilla()">
+  </form>
+  
+  <div style="margin-left: 20px;">
+    <div>
+      <h2>TITULO NOTAS F7</h2>
+      <textarea id="tituloNotasF7" readonly></textarea>
+      <button class="copiar" onclick="copiarTextoTextarea('tituloNotasF7')">Copiar</button>
+    </div>
+    <div>
+      <h2>PLANTILLA NOTAS F7</h2>
+      <textarea id="plantillaCreacion" readonly></textarea>
+      <button class="copiar" onclick="copiarTextoTextarea('plantillaCreacion')">Copiar</button>
+    </div>
+
+    <div>
+      <h2>PLANTILLA CORREO</h2>
+      <textarea id="plantillaLog" readonly></textarea>
+      <button class="copiar" onclick="copiarTextoTextarea('plantillaLog')">Copiar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr(".flatpickr", {
+    enableTime: false,
+    dateFormat: "d-m-Y",
+  });
+});
+
+function limpiarCampos() {
+  document.getElementById("formulario").reset();
+  document.getElementById("miniFormulario").reset();
+}
+
+function copiarTextoTextarea(id) {
+  var texto = document.getElementById(id).value;
+  navigator.clipboard.writeText(texto).then(function() {
+    alert("¡Copiado con éxito!");
+  }, function() {
+    alert("Error al copiar.");
+  });
+}
+
+function generarPlantilla() {
+  var fechaVisita = document.getElementById("fechaVisita").value;
+  var franjaVisita = document.getElementById("franjaVisita").value;
+  var CMTSACTUAL = document.getElementById("CMTSACTUAL").value;
+  var CMTSNUEVA = document.getElementById("CMTSNUEVA").value;
+  var Razon = document.getElementById("Razon").value;
+  var Direccion = document.getElementById("Direccion").value;
+  var Ciudad = document.getElementById("Ciudad").value;
+  var Correo = document.getElementById("Correo").value;
+  var IPs1 = document.getElementById("IPs1").value;
+  var IPs2 = document.getElementById("IPs2").value;
+  var Gateway = document.getElementById("Gateway").value;
+  var Mascara = document.getElementById("Mascara").value;
+  var DNS = document.getElementById("DNS").value;
+
+  var tituloNotasF7 = "****" + document.getElementById("numeroPQR").value + "****";
+
+  document.getElementById("tituloNotasF7").value = tituloNotasF7;
+
+  var plantillaCreacion = tituloNotasF7 + "\n" +
+                     "Cuenta: " + document.getElementById("Cuenta").value + "\n" +
+                     "Razon: " + Razon + "\n" +
+                     "Direccion: " + Direccion + "\n" +
+                     "Ciudad: " + Ciudad + "\n" +
+                     "Correo: " + Correo + "\n" +
+                     "Ip's que dejarían de funcionar a partir de la fecha indicada: " + fechaVisita + "\n" +
+                     "IP´s Actuales: " + IPs1 + "\n" +
+                     "IP´s Nuevas: " + IPs2 + "\n" +
+                     "Gateway: " + Gateway + "\n" +
+                     "Mascara: " + Mascara + "\n" +
+                     "DNS´s: " + DNS + "\n" +
+                     "La actividad de mantenimiento se efectuará los días " + franjaVisita + " Se migra cmts " + CMTSACTUAL + " a " + CMTSNUEVA + "\n";
+  document.getElementById("plantillaCreacion").value = plantillaCreacion;
+
+ var plantillaLog = "Sr(a). " + Razon + "\n\n" +
+                    "Informamos que la actividad de mantenimiento ha sido programada para el día " + franjaVisita + " del mismo día, motivo por el cual es necesario que las ip’s que viene utilizando en sus equipos se modifiquen con la información indicada a continuación, con el fin de evitar que presente caída alguna sobre su servicio.\n\n" +
+                    "Cuenta: " + document.getElementById("Cuenta").value + "\n" +
+                    "Razón: " + Razon + "\n" +
+                    Direccion + "\n" +
+                    Ciudad + "\n" +
+                    "Correo: " + Correo + "\n\n" +
+                    "Ip's que dejarían de funcionar a partir de la fecha indicada: " + fechaVisita + "\n" +
+                    IPs1 + "\n\n" +
+                    "Ip's Nueva: " + IPs2 + "\n" +
+                    "Gateway: " + Gateway + "\n" +
+                    "Mascara: " + Mascara + "\n" +
+                    "DNS: " + DNS;
+
+  document.getElementById("plantillaLog").value = plantillaLog;
+}
+</script>
+
+<footer>By SO</footer>
+
+</body>
+</html>
