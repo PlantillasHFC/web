@@ -129,12 +129,6 @@ textarea {
     <label for="contadorEynMaximo">Contador EYN MAXIMO:</label>
     <input type="number" id="contadorEynMaximoNegocios" name="contadorEynMaximoNegocios" placeholder="Negocios" required>
     <input type="number" id="contadorEynMaximoEmpresas" name="contadorEynMaximoEmpresas" placeholder="Empresas" required><br>
-    <label for="numeroPQR">Numero de PQR:</label>
-    <input type="text" id="numeroPQR" name="numeroPQR" required><br>
-    <label for="marcacion">Marcación:</label>
-    <input type="text" id="marcacion" name="marcacion" required><br>
-    <label for="fabricante">Fabricante:</label>
-    <input type="text" id="fabricante" name="fabricante" required><br>
   </form>
 
   <form id="formulario">
@@ -220,9 +214,6 @@ function copiarTexto(id) {
 
 function generarPlantilla() {
   var Cuenta = document.getElementById("Cuenta").value;
-  var fabricante = document.getElementById("fabricante").value;
-  var numeroPQR = document.getElementById("numeroPQR").value;
-  var marcacion = document.getElementById("marcacion").value;
   var nodoOptico = document.getElementById("NodoOptico").value;
   var nombre = document.getElementById("Nombre").value;
   var celular = document.getElementById("Celular").value;
