@@ -360,9 +360,7 @@
         const puertos = document.getElementById('puertos').value;
         const falloReportado = document.getElementById('falloReportado').value;
         const router = document.getElementById('router').value;
-        document.getElementById('text1').value = `
-${enlace} + ${redAcceso} + ${puertos} + ${falloReportado} + ${router}
-        `;
+        document.getElementById('text1').value = `${enlace} + ${redAcceso} + ${puertos} + ${falloReportado} + ${router}`;
         
         // Generar texto para Text2 (Formulario Principal)
         const nombreContacto = document.getElementById('nombreContacto').value;
@@ -378,8 +376,7 @@ ${enlace} + ${redAcceso} + ${puertos} + ${falloReportado} + ${router}
         const telefonoSede = document.getElementById('telefonoSede').value;
         const fallaReportadaMain = document.getElementById('fallaReportadaMain').value;
         const fallaReincidente = document.getElementById('fallaReincidente').value;
-        document.getElementById('text2').value = `
-Nombre Contacto que reporta: ${nombreContacto}
+        document.getElementById('text2').value = `Nombre Contacto que reporta: ${nombreContacto}
 Teléfono de Contacto: ${telefonoContacto}
 Correo Electrónico: ${correoContacto}
 Dirección de sede afectada: ${direccionSede}
@@ -394,8 +391,7 @@ TELÉFONOS DE CONTACTO EN SEDE: ${telefonoSede}
 Falla reportada: ${fallaReportadaMain}
 -------------------------------------
 Es una falla Reincidente: ${fallaReincidente}
--------------------------------------
-        `;
+-------------------------------------`;
         
         // Generar texto para Text3 (Detalles Técnicos)
         const PDSR = document.getElementById('PDSR').value.trim();
@@ -404,8 +400,7 @@ Es una falla Reincidente: ${fallaReincidente}
         const ping = document.getElementById('ping').value.trim();
         const capa2 = document.getElementById('capa2').value.trim();
         const capa3 = document.getElementById('capa3').value.trim();
-        document.getElementById('text3').value = `
-//////////////////////////PDSR//////////////////////////// 
+        document.getElementById('text3').value = `//////////////////////////PDSR//////////////////////////// 
 
 ${PDSR}
 
@@ -427,8 +422,7 @@ ${capa2}
 
 ///////////////////////ACCESO A ROUTER////////////////////
 
-${capa3}
-        `;
+${capa3}`;
     }
 
     function copyToClipboard(textareaId) {
