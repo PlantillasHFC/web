@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="icon" href="https://dplnews.com/wp-content/uploads/2022/02/dplnews_claro_mc100222.jpeg" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Gestión Backoffice HFC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.css">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+    	    margin: 0;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+  }
+
+  .titulo {
+    width: 103%;
+    background-color: #000000;
+    text-align: center;
+    color: white;
+    margin-bottom: 0px;
+  }
+  .botones-container {
+    background-color: #000000; /* Azul oscuro */
+    margin-top: 0px;
+    width: 103%; /* Ajuste de ancho */
+    display: flex;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    flex-wrap: wrap; /* Envolver elementos */
+    margin-bottom: 30px;
+    border: 40px solid #000000;
+}
+
+.botones-container button {
+    background-color: #000000; /* Azul oscuro */
+    color: white; /* Letras blancas */
+    padding: 12px 20px; /* Aumentar el espacio interno */
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 2px; /* Espacio entre los botones */
+    cursor: pointer;
+    font-size: 16px; /* Tamaño de letra */
+}
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Envolver elementos */
+}
+
+    #mini-form, #formulario {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+    #main-form, #formulario {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+    #details-form, #formulario {
+           display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+#details-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#details-form > .horizontal-textareas {
+    flex-wrap: wrap;
+    margin-top: 1px;
+}
+
+        .form-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-section input, 
+        .form-section select, 
+        .form-section textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .form-section textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+                background-color: #000000;
+    color: white;
+    padding: 10px 130px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .text-container {
+ max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+        .textarea-item {
+            flex: 1;
+            min-width: 200px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .textarea-item label {
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        .textarea-item button {
+                background-color: #000000;
+    color: white;
+    padding: 10px 130px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+        .textarea-item button:hover {
+            background-color: #ccc;
+        }
+
+.horizontal-textareas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Espacio superior entre el título "Pruebas realizadas" y las textareas */
+}
+
+.horizontal-textareas div {
+    margin-right: 10px; /* Añade espacio entre cada textarea */
+    flex-grow: 1;
+}
+
+.horizontal-textareas textarea {
+    width: 100%; /* Ocupa todo el ancho disponible en cada contenedor de textarea */
+    height: 100px; /* Ajusta la altura según sea necesario */
+}
+    </style>
+</head>
+<body>
+
+<div class="titulo">
+        <h1>PLANTILLAS FTTX DEDICADO (SERVICE MANAGER)</h1>
+    </div>
+
+<div class="botones-container">
+  <h3></h3>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+  <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_DEDICADO.html'">Dedicado FTTX</button>
+</div>
+
+
+    <div class="container">
+        <!-- Mini Formulario -->
+        <div class="form-section">
+            <form id="mini-form">
+                <label for="falloReportado">Fallo reportado:</label>
+                <input type="text" id="falloReportado" name="falloReportado">
+
+                <label for="redAcceso">Red De Acceso:</label>
+                <input type="text" id="redAcceso" name="redAcceso">
+
+                <label for="puertos">Puertos:</label>
+                <input type="text" id="puertos" name="puertos">
+
+                <label for="router">Router:</label>
+                <input type="text" id="router" name="router">
+            </form>
+        </div>
+
+        <!-- Formulario Principal -->
+        <div class="form-section">
+            <form id="main-form">
+                <h2>Datos de Contacto</h2>
+                <label for="nombreContacto">Nombre Contacto que reporta:</label>
+                <input type="text" id="nombreContacto" name="nombreContacto">
+
+                <label for="telefonoContacto">Teléfono de Contacto:</label>
+                <input type="text" id="telefonoContacto" name="telefonoContacto">
+
+                <label for="correoContacto">Correo Electrónico:</label>
+                <input type="text" id="correoContacto" name="correoContacto">
+
+                <label for="direccionSede">Dirección de sede afectada:</label>
+                <input type="text" id="direccionSede" name="direccionSede">
+
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad">
+
+                <label for="enlace">Enlace:</label>
+                <input type="text" id="enlace" name="enlace">
+
+                <label for="enlaceTipo">Enlace Principal o Backup:</label>
+                <select id="enlaceTipo" name="enlaceTipo">
+                    <option value="Principal">Principal</option>
+                    <option value="Backup">Backup</option>
+                </select>
+
+                <label for="permisosRequeridos">Permisos Requeridos:</label>
+                <input type="text" id="permisosRequeridos" name="permisosRequeridos">
+
+                <label for="horariosAtencion">Horarios de atención (confirmar si es jornada continua):</label>
+                <input type="text" id="horariosAtencion" name="horariosAtencion">
+
+                <label for="tkInterno">Tk Interno (Si aplica):</label>
+                <input type="text" id="tkInterno" name="tkInterno">
+
+                <label for="contactoSede">CONTACTO EN SEDE:</label>
+                <input type="text" id="contactoSede" name="contactoSede">
+
+                <label for="telefonoSede">TELÉFONOS DE CONTACTO EN SEDE:</label>
+                <input type="text" id="telefonoSede" name="telefonoSede">
+
+                <label for="fallaReportadaMain">Falla reportada:</label>
+                <input type="text" id="fallaReportadaMain" name="fallaReportadaMain">
+
+                <label for="fallaReincidente">Es una falla Reincidente:</label>
+                <input type="text" id="fallaReincidente" name="fallaReincidente">
+                <button type="button" onclick="generarPlantillas()">Generar Plantillas</button>
+            </form>
+        </div>
+
+        <!-- Textareas para resultados con botones de copiar -->
+        <div class="text-container">
+            <!-- Textarea 1 -->
+            <div class="textarea-item">
+                <label for="text1">Título:</label>
+                <textarea id="text1" readonly></textarea>
+                <button onclick="copyToClipboard('text1')">Copiar</button>
+            </div>
+            
+            <!-- Textarea 2 -->
+            <div class="textarea-item">
+                <label for="text2">Datos de Contacto:</label>
+                <textarea id="text2" readonly></textarea>
+                <button onclick="copyToClipboard('text2')">Copiar</button>
+            </div>
+            
+            <!-- Textarea 3 -->
+            <div class="textarea-item">
+                <label for="text3">Pruebas Realizadas:</label>
+                <textarea id="text3" readonly></textarea>
+                <button onclick="copyToClipboard('text3')">Copiar</button>
+            </div>
+
+        <!-- Formulario de Detalles Técnicos -->
+        <div class="form-section">
+            <form id="details-form">
+                <h2>Pruebas realizadas</h2>
+        <div class="horizontal-textareas">
+            <div>
+                <label for="PDSR">PDSR:</label>
+                <textarea id="PDSR" name="PDSR"></textarea>
+            </div>
+            <div>
+                <label for="redAccesoDet">Red de Acceso:</label>
+                <textarea id="redAccesoDet" name="redAccesoDet"></textarea>
+            </div>
+            <div>
+                <label for="ruta">Ruta:</label>
+                <textarea id="ruta" name="ruta"></textarea>
+            </div>
+            <div>
+                <label for="ping">Ping:</label>
+                <textarea id="ping" name="ping"></textarea>
+            </div>
+            <div>
+                <label for="capa2">Capa 2:</label>
+                <textarea id="capa2" name="capa2"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+    <script>
+        function generarPlantillas() {
+    // Generar texto para Text1 (Mini Formulario)
+    const enlace = document.getElementById('enlace').value;
+    const redAcceso = document.getElementById('redAcceso').value;
+    const puertos = document.getElementById('puertos').value;
+    const falloReportado = document.getElementById('falloReportado').value;
+    const router = document.getElementById('router').value;
+    document.getElementById('text1').value = `
+${enlace} + ${redAcceso} + ${puertos} + ${falloReportado} + ${router}
+    `;
+    
+    // Generar texto para Text2 (Formulario Principal)
+    const nombreContacto = document.getElementById('nombreContacto').value;
+    const telefonoContacto = document.getElementById('telefonoContacto').value;
+    const correoContacto = document.getElementById('correoContacto').value;
+    const direccionSede = document.getElementById('direccionSede').value;
+    const ciudad = document.getElementById('ciudad').value;
+    const enlaceTipo = document.getElementById('enlaceTipo').value;
+    const permisosRequeridos = document.getElementById('permisosRequeridos').value;
+    const horariosAtencion = document.getElementById('horariosAtencion').value;
+    const tkInterno = document.getElementById('tkInterno').value;
+    const contactoSede = document.getElementById('contactoSede').value;
+    const telefonoSede = document.getElementById('telefonoSede').value;
+    const fallaReportadaMain = document.getElementById('fallaReportadaMain').value;
+    const fallaReincidente = document.getElementById('fallaReincidente').value;
+
+    document.getElementById('text2').value = `
+Nombre Contacto que reporta: ${nombreContacto}
+Teléfono de Contacto: ${telefonoContacto}
+Correo Electrónico: ${correoContacto}
+Dirección de sede afectada: ${direccionSede}
+Ciudad: ${ciudad}
+Enlace: ${enlaceTipo}
+Permisos Requeridos: ${permisosRequeridos}
+Horarios de atención: ${horariosAtencion}
+Tk Interno: ${tkInterno}
+CONTACTO EN SEDE: ${contactoSede}
+TELÉFONOS DE CONTACTO EN SEDE: ${telefonoSede}
+-------------------------------------
+Falla reportada: ${fallaReportadaMain}
+-------------------------------------
+Es una falla Reincidente: ${fallaReincidente}
+-------------------------------------
+`;
+    
+    // Generar texto para Text3 (Detalles Técnicos)
+    const PDSR = document.getElementById('PDSR').value.trim();
+    const redAccesoDet = document.getElementById('redAccesoDet').value.trim();
+    const ruta = document.getElementById('ruta').value.trim();
+    const ping = document.getElementById('ping').value.trim();
+    const capa2 = document.getElementById('capa2').value.trim();
+
+    document.getElementById('text3').value = `
+//////////////////////////PDSR//////////////////////////// 
+
+${PDSR}
+
+//////////////////////RED DE ACCESO/////////////////////// 
+
+${redAccesoDet}
+
+///////////////////////////RUTA/////////////////////////// 
+
+${ruta}
+
+///////////////////////////PING/////////////////////////// 
+
+${ping}
+
+///////////////////////////CAPA 2///////////////////////// 
+
+${capa2}
+`;
+}
+
+
+        function copyToClipboard(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            textarea.select();
+            document.execCommand('copy');
+            alert('Texto copiado al portapapeles');
+        }
+    </script>
+</body>
+</html>
