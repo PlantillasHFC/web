@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="https://dplnews.com/wp-content/uploads/2022/02/dplnews_claro_mc100222.jpeg" type="image/x-icon">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulario de Gestión Backoffice HFC</title>
@@ -31,6 +32,7 @@
     align-items: center; /* Centrar los elementos verticalmente */
     flex-wrap: wrap; /* Envolver elementos */
     margin-bottom: 30px;
+    border: 40px solid #000000;
 }
 
 .botones-container button {
@@ -111,19 +113,21 @@ textarea {
     </div>
 
 <div class="botones-container">
-  <h3></h3>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_DEDICADO.html'">Dedicado FTTX</button>
 </div>
 
 <div class="container">
   <form id="miniFormulario">
+    <label for="Nodo">Nodo:</label>
+    <input type="text" id="Nodo" name="Nodo" required><br>
     <label for="numeroPQR">Numero de PQR:</label>
     <input type="text" id="numeroPQR" name="numeroPQR" required><br>
     <label for="marcacion">Marcación:</label>
@@ -243,6 +247,9 @@ function copiarFormulario() {
 }
 
 function generarPlantilla() {
+  var Nodo = document.getElementById("Nodo").value;
+  var reporteFalla = document.getElementById("reporteFalla").value;
+  var llsOT = document.getElementById("llsOT").value;
   var fabricante = document.getElementById("fabricante").value;
   var nombreLlamada = document.getElementById("nombreLlamada").value;
   var celular = document.getElementById("celular").value;
@@ -251,7 +258,7 @@ function generarPlantilla() {
   var vecinos = document.getElementById("vecinos").value;
   var observaciones = document.getElementById("observaciones").value;
   
-  var plantillaLog = "Nombre: " + nombreLlamada + "/Celular: " + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "/VER F7...(" + fabricante + ")";
+  var plantillaLog = "*" + llsOT + "* EYN / " + reporteFalla + " // NODO: " + Nodo + "\n" + "Nombre: " + nombreLlamada + "/ Celular: " + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + " / VER F7...(" + fabricante + ")";
   document.getElementById("plantillaLog").value = plantillaLog;
 
   var tituloNotasF7 = "TK " + document.getElementById("numeroPQR").value + " " + document.getElementById("marcacion").value;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="https://dplnews.com/wp-content/uploads/2022/02/dplnews_claro_mc100222.jpeg" type="image/x-icon">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulario de Gestión Backoffice HFC</title>
@@ -31,6 +32,7 @@
     align-items: center; /* Centrar los elementos verticalmente */
     flex-wrap: wrap; /* Envolver elementos */
     margin-bottom: 30px;
+    border: 40px solid #000000;
 }
 
 .botones-container button {
@@ -111,15 +113,15 @@ textarea {
     </div>
 
 <div class="botones-container">
-  <h3></h3>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
-  <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_DEDICADO.html'">Dedicado FTTX</button>
 </div>
 
 <div class="container">
@@ -136,7 +138,7 @@ textarea {
     <input type="text" id="franjaVisita" name="franjaVisita" required><br>
   </form>
 
-  <form id="formulario">
+    <form id="formulario">
     <label for="Cuenta">Cuenta</label>
     <input type="text" id="Cuenta" name="Cuenta" required><br>
     <label for="reporteFalla">Reporte de falla</label>
@@ -230,11 +232,19 @@ function limpiarCampos() {
 function copiarTexto(id) {
   var campos = document.querySelectorAll('#' + id + ' input, #' + id + ' select, #' + id + ' textarea');
   var texto = "";
+  
   campos.forEach(function(campo) {
     if (campo.type !== 'button') {
-      texto += campo.previousElementSibling.textContent + ": " + campo.value + "\n";
+      if (campo.id === "llsOT") {
+        var fechaVisita = document.getElementById("fechaVisita").value;
+        var franjaVisita = document.getElementById("franjaVisita").value;
+        texto += campo.previousElementSibling.textContent + ": " + campo.value + " " + fechaVisita + " " + franjaVisita + "\n";
+      } else {
+        texto += campo.previousElementSibling.textContent + ": " + campo.value + "\n";
+      }
     }
   });
+  
   navigator.clipboard.writeText(texto).then(function() {
     alert("¡Copiado con éxito!");
   }, function() {
@@ -263,10 +273,10 @@ function generarPlantilla() {
   var vecinos = document.getElementById("vecinos").value;
   var observaciones = document.getElementById("observaciones").value;
   
-  var plantillaCreacion = "SOPPY: " + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "";
+  var plantillaCreacion = "SOPPY: " + nombreLlamada + "/" + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + "";
   document.getElementById("plantillaCreacion").value = plantillaCreacion;
   
-  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + "/" + celular + "/CM " + cmDecodificadorMta + "/PROVISION " + provisionCorrecta + "/VECINOS " + vecinos + "/" + observaciones + "/VER F7...(" + fabricante + ")";
+  var plantillaLog = "*LLS:" + llsOT + "* Fecha: " + fechaVisita + " Franja: " + franjaVisita + "\n" + nombreLlamada + "/" + celular + "/ CM " + cmDecodificadorMta + "/ PROVISION " + provisionCorrecta + "/ VECINOS " + vecinos + "/" + observaciones + " / VER F7...(" + fabricante + ")";
 
   document.getElementById("plantillaLog").value = plantillaLog;
 
