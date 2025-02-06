@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="icon" href="https://dplnews.com/wp-content/uploads/2022/02/dplnews_claro_mc100222.jpeg" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Gestión Backoffice HFC</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.6/flatpickr.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .titulo {
+    width: 103%;
+    background-color: #000000;
+    text-align: center;
+    color: white;
+    margin-bottom: 0px;
+  }
+
+    .botones-container {
+        background-color: #000000; /* Azul oscuro */
+        margin-top: 0px;
+        width: 100%; /* Ajuste de ancho */
+        display: flex;
+        justify-content: center; /* Centrar los elementos horizontalmente */
+        align-items: center; /* Centrar los elementos verticalmente */
+        flex-wrap: wrap; /* Envolver elementos */
+        margin-bottom: 30px;
+        border: 40px solid #000000;
+    }
+
+    .botones-container button {
+        background-color: #000000; /* Azul oscuro */
+        color: white; /* Letras blancas */
+        padding: 12px 20px; /* Aumentar el espacio interno */
+        border: 2px solid white;
+        border-radius: 5px;
+        margin: 2px; /* Espacio entre los botones */
+        cursor: pointer;
+        font-size: 16px; /* Tamaño de letra */
+    }
+
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        overflow: hidden; /* Evita el colapso de márgenes */
+        padding: 20px; /* Añade padding al contenedor */
+    }
+
+    #mini-form, #main-form, #details-form, .text-container {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 20px; /* Ajusta el margen según lo necesites */
+        margin-bottom: 40px;
+    }
+
+#details-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1300px;
+    margin: 30px auto;
+    margin-top: 40px;
+    margin-right: 30px;
+    padding-left: 40px;
+}
+
+#details-form .form-section {
+    width: 100%;
+}
+
+#details-form .form-section textarea {
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+}
+
+    .form-section {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin-bottom: 20px;
+
+    }
+
+.form-section label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .form-section input, 
+    .form-section select, 
+    .form-section textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    .form-section textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    button {
+        background-color: #000000;
+        color: white;
+        padding: 10px 130px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #ddd;
+    }
+
+    .text-container {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 0px; /* Ajusta el margen según lo necesites */
+        gap: 15px; 
+        margin-left: 30px;
+    }
+
+    .textarea-item {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .textarea-item label {
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    .textarea-item button {
+        background-color: #000000;
+        color: white;
+        padding: 10px 160px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+
+    .textarea-item button:hover {
+        background-color: #ccc;
+    }
+
+    #text1, #text2, #text3 {
+        width: 400px;
+        height: 400px;
+    }
+
+    #Observaciones, #PDSR, #redAccesoDet, #ruta, #ping, #capa2, #capa3 {
+        width: 400px;
+        height: 100px;
+    }
+
+    .horizontal-textareas {
+        display: flex;
+        flex-wrap: wrap; /* Permite que los elementos se muevan a una nueva línea si no caben */
+        gap: 15px; /* Espacio entre los cuadros */
+    }
+
+    .horizontal-textareas div {
+        flex: 1 1 calc(33.33% - 15px); /* Cada textarea ocupa un 33% del ancho del contenedor con espacio entre ellos */
+        min-width: 250px; /* Evita que se hagan demasiado pequeños */
+    }
+
+    .horizontal-textareas textarea {
+        width: 100%;
+        height: 80px; /* Ajuste de altura */
+    }
+
+    .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Oculto por defecto */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+        }
+
+        .tab.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .close-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: #333;
+        }
+ 
+        .form-container {
+            display: flex;
+            align-items: flex-start; /* Alinea la parte superior */
+            justify-content: flex-start;
+            gap: 20px; /* Espacio entre el formulario y la textarea */
+        }
+
+</style>
+
+</head>
+<body>
+
+<div class="titulo">
+    <h1>PLANTILLAS FTTX/FO PLANTA (SERVICE MANAGER)</h1>
+</div>
+
+<div class="botones-container">
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_VISITAS.html'">Visitas Tecnicas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FALLAS_MASIVAS.html'">Fallas Masivas</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_ASIGNAR_IP.html'">Asignacion IP fija</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUDES_WIFI.html'">Solicitudes WI-FI</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CREAR_MASIVA.html'">Creacion Incidente Maximo</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_SOLICITUD_TELEFONIA.html'">Solicitudes de Telefonia</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_CONFIGURACIONES_ESPECIALES.html'">Configuraciones Especiales</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_GESTION_CHG.html'">Gestion CHG</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_DEDICADO.html'">Dedicado FTTX</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_FO_DATOS.html'">Datos</button>
+    <button onclick="window.location.href='PLANTILLAS_WEB_FTTX_FO_PLANTA.html'">Planta</button>
+    <button onclick="window.location.href='BUSCADOR.html'">Buscador</button>
+</div>
+
+    <div class="form-container">
+    <!-- Formulario Principal -->
+    <div class="form-section">
+        <form id="main-form">
+            <h2>Datos de Contacto</h2>
+            <label for="TipoServicio">Tipo de Servicio:</label>
+            <input type="text" id="TipoServicio" name="TipoServicio">
+
+            <label for="Subsegmento">Subsegmento:</label>
+            <input type="text" id="Subsegmento" name="Subsegmento">
+
+            <label for="CodigoServicio">Código de Servicio:</label>
+            <input type="text" id="CodigoServicio" name="CodigoServicio">
+
+            <label for="Empresa">Empresa:</label>
+            <input type="text" id="Empresa" name="Empresa">
+
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" id="Descripcion" name="Descripcion">
+
+            <label for="Medicion">Medicion OTDR:</label>
+            <input type="text" id="Medicion" name="Medicion">
+
+            <label for="SWacceso">Red de acceso:</label>
+            <input type="text" id="SWacceso" name="SWacceso">
+
+            <label for="Puertos">Puerto:</label>
+            <input type="text" id="Puertos" name="Puertos">
+
+            <label for="OTinstalacion">OT de instalacion:</label>
+            <input type="text" id="OTinstalacion" name="OTinstalacion">
+
+            <label for="telefonoSede">Teléfono:</label>
+            <input type="text" id="telefonoSede" name="telefonoSede">
+
+            <label for="Permisos">Permisos especiales:</label>
+            <input type="text" id="Permisos" name="Permisos">
+            <button type="button" onclick="generarPlantillas()">Generar Plantillas</button>
+        </form>
+    </div>
+        
+        <!-- Textarea de Datos de Contacto -->
+    <div class="textarea-item">
+        <label for="text2">Datos de Contacto:</label>
+        <textarea id="text2" readonly></textarea>
+        <button onclick="copyToClipboard('text2')">Copiar</button>
+    </div>
+</div>
+<script>
+
+    function generarPlantillas() {
+        
+        // Generar texto para Text2 (Formulario Principal)
+        const TipoServicio = document.getElementById('TipoServicio').value;
+        const Subsegmento = document.getElementById('Subsegmento').value;
+        const CodigoServicio = document.getElementById('CodigoServicio').value;
+        const Empresa = document.getElementById('Empresa').value;
+        const Descripcion = document.getElementById('Descripcion').value;
+        const Medicion = document.getElementById('Medicion').value;
+        const SWacceso = document.getElementById('SWacceso').value;
+        const Puertos = document.getElementById('Puertos').value;
+        const OTinstalacion = document.getElementById('OTinstalacion').value;
+        const telefonoSede = document.getElementById('telefonoSede').value;
+        const Permisos = document.getElementById('Permisos').value;
+        document.getElementById('text2').value = `--------------------------------------------------------
+Desplazamiento Planta Externa
+--------------------------------------------------------
+Tipo de Servicio: (${TipoServicio})
+Subsegmento: (${Subsegmento})
+Código de Servicio: (${CodigoServicio})
+Empresa: (${Empresa})
+Descripcion: (${Descripcion})
+Medicion OTDR: (${Medicion})
+Red de acceso: (${SWacceso})
+Puerto: (${Puertos})
+OT de instalacion: (${OTinstalacion})
+Teléfono: (${telefonoSede})
+Permisos especiales: (${Permisos})`;
+        
+    }
+
+    function copyToClipboard(textareaId) {
+        const textarea = document.getElementById(textareaId);
+        textarea.select();
+        document.execCommand('copy');
+        alert('Texto copiado al portapapeles');
+    }
+</script>
+</body>
+</html>
